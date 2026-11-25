@@ -1,7 +1,7 @@
 const adventCalendar = [
   {
     day: 1,
-    date: "2026-11-10",
+    date: "2026-12-01",
     title: "Caso 01: La Firma del Primer Secreto",
     message: "Mi amor, hoy empieza la aventura. Cada día te dejo una pista, porque tú eres mi caso favorito y mi mayor regalo.",
     riddle: "Busca el lugar donde la noche guarda la calma: junto a la almohada, en el punto más íntimo del descanso.",
