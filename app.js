@@ -4,9 +4,9 @@ const adventCalendar = [
     date: "2026-11-27",
     title: "Caso 01: La Firma del Primer Secreto",
     message: "Para encontrar tu primer regalito lo puedo encontrar en un sitio en el que pasamos muchas horas",
-    riddle: "Está en nuestro cuarto, pero vas a tener que mover alguna que otra cosita para encontrarlo",
-    hint1: "Mira detrás de los cojines de nuestra cama!",
-    hint2: "Está en la mesita de noche, debajo de la lámpara."
+    riddle: "Para encontrar tu primer regalito lo puedo encontrar en un sitio en el que pasamos muchas horas",
+    hint1: "Está en nuestro cuarto, pero vas a tener que mover alguna que otra cosita para encontrarlo",
+    hint2: "Mira detrás de los cojines de nuestra cama!"
   },
   {
     day: 2,
