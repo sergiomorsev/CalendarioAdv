@@ -2,7 +2,7 @@ const adventCalendar = [
   {
     day: 1,
     date: "2026-11-27",
-    title: "Caso 01: La Firma del Primer Secreto",
+    title: "Caso 01: Un comienzo dulce",
     message: "Para encontrar tu primer regalito lo puedo encontrar en un sitio en el que pasamos muchas horas",
     riddle: "Para encontrar tu primer regalito lo puedo encontrar en un sitio en el que pasamos muchas horas",
     hint1: "Está en nuestro cuarto, pero vas a tener que mover alguna que otra cosita para encontrarlo",
@@ -11,20 +11,20 @@ const adventCalendar = [
   {
     day: 2,
     date: "2026-12-02",
-    title: "Caso 02: La Sombra del Sofá",
-    message: "Eres la razón por la que todo se vuelve más bonito. Hoy te regalo un pequeño beso escondido en la casa.",
-    riddle: "No mires demasiado alto: el secreto se esconde donde descansan los sueños y los abrazos.",
-    hint1: "Busca el rincón más cómodo de la casa.",
-    hint2: "Está debajo del cojín del sofá principal."
+    title: "Caso 02: Se acabó el robarme",
+    message: "El regalito de hoy esta dentro de algo que antes utilizábamos mucho, pero que ahora tenemos abandonado",
+    riddle: "El regalito de hoy esta dentro de algo que antes utilizábamos mucho, pero que ahora tenemos abandonado",
+    hint1: "Busca por la zona de mi setup, además ese lugar está oscuro",
+    hint2: "Abre el microondas viejo y lo verás"
   },
   {
     day: 3,
     date: "2026-12-03",
-    title: "Caso 03: El Frutero Fantasma",
-    message: "Te quiero en cada luz y en cada sombra. Hoy vuelve a ser un recuerdo de nosotros, escondido entre lo cotidiano.",
-    riddle: "La pista vive donde la fruta no se ha ido a dormir: entre los colores que brillan en la cocina.",
-    hint1: "No es el cajón, es la superficie donde dejamos lo visible.",
-    hint2: "Está dentro del frutero de la cocina."
+    title: "Caso 03: Para no perderte",
+    message: "Hoy tu regalito está escondido entre algunas de tus cosas favoritas",
+    riddle: "Hoy tu regalito está escondido entre algunas de tus cosas favoritas",
+    hint1: "Busca donde guardas esas cositas que te pones cuando te arreglas para salir.",
+    hint2: "Abre tu joyero!"
   },
   {
     day: 4,
