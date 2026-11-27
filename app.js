@@ -1,7 +1,7 @@
 const adventCalendar = [
   {
     day: 1,
-    date: "2026-11-27",
+    date: "2026-11-28",
     title: "Caso 01: Un comienzo dulce",
     message: "Para encontrar tu primer regalito lo puedo encontrar en un sitio en el que pasamos muchas horas",
     riddle: "Para encontrar tu primer regalito lo puedo encontrar en un sitio en el que pasamos muchas horas",
@@ -10,7 +10,7 @@ const adventCalendar = [
   },
   {
     day: 2,
-    date: "2026-12-02",
+    date: "2026-11-29",
     title: "Caso 02: Se acabó el robarme",
     message: "El regalito de hoy esta dentro de algo que antes utilizábamos mucho, pero que ahora tenemos abandonado",
     riddle: "El regalito de hoy esta dentro de algo que antes utilizábamos mucho, pero que ahora tenemos abandonado",
@@ -19,7 +19,7 @@ const adventCalendar = [
   },
   {
     day: 3,
-    date: "2026-12-03",
+    date: "2026-11-30",
     title: "Caso 03: Para no perderte",
     message: "Hoy tu regalito está escondido entre algunas de tus cosas favoritas",
     riddle: "Hoy tu regalito está escondido entre algunas de tus cosas favoritas",
@@ -28,7 +28,7 @@ const adventCalendar = [
   },
   {
     day: 4,
-    date: "2026-12-04",
+    date: "2026-12-01",
     title: "Caso 04: El Cajón de las Llaves",
     message: "No necesito un mapa para encontrarte. Solo sé que contigo cada rincón se vuelve más cálido.",
     riddle: "El secreto está donde se guardan las puertas y los comienzos: el lugar de las llaves.",
