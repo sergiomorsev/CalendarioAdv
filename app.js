@@ -318,10 +318,10 @@ function showWelcomeScreen() {
               <span class="typing-caret" aria-hidden="true"></span>
             </div>
 
-            <button class="welcome-action" id="start-calendar" type="button" hidden>
+            /* <button class="welcome-action" id="start-calendar" type="button" hidden>
               ¡Que comience la magia!
               <span aria-hidden="true">✦</span>
-            </button>
+            </button> */
           </div>
         </div>
       </section>
