@@ -261,20 +261,130 @@ function formatDate(dateString) {
   }).format(date);
 }
 
+function showWelcomeScreen() {
+  app.innerHTML = `
+    <main class="welcome-screen" aria-label="Bienvenida al calendario de Adviento">
+      <div class="welcome-lights" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <section class="welcome-card">
+        <div class="welcome-stars" aria-hidden="true">
+          <span>✦</span><span>✧</span><span>✦</span>
+        </div>
+
+        <div class="welcome-copy">
+          <p class="welcome-eyebrow">Especial para ti</p>
+          <h1>La magia comienza aquí</h1>
+        </div>
+
+        <div class="welcome-content">
+          <div class="santa-stage" aria-label="Papá Noel te da la bienvenida">
+            <div class="santa-glow" aria-hidden="true"></div>
+            <div class="santa">
+              <div class="santa-hat" aria-hidden="true">
+                <div class="hat-tip"></div>
+                <div class="hat-pom"></div>
+              </div>
+              <div class="santa-head">
+                <div class="ear left"></div>
+                <div class="ear right"></div>
+                <div class="brow left"></div>
+                <div class="brow right"></div>
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="nose"></div>
+                <div class="cheek left"></div>
+                <div class="cheek right"></div>
+                <div class="beard">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="mustache left"></div>
+                <div class="mustache right"></div>
+              </div>
+              <div class="santa-body">
+                <div class="coat-trim"></div>
+                <div class="belt"><span></span></div>
+              </div>
+              <div class="santa-arm left"></div>
+              <div class="santa-arm right"><span class="wave-mitt"></span></div>
+            </div>
+          </div>
+
+          <div class="speech-column">
+            <div class="speech-bubble">
+              <div class="speech-bow" aria-hidden="true">✦</div>
+              <p id="santa-message" class="santa-message" aria-label="Mensaje de Papá Noel"></p>
+              <span class="typing-caret" aria-hidden="true"></span>
+            </div>
+
+            <button class="welcome-action" id="start-calendar" type="button" hidden>
+              ¡Que comience la magia!
+              <span aria-hidden="true">✦</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  `;
+
+  const messageElement = app.querySelector("#santa-message");
+  const startButton = app.querySelector("#start-calendar");
+  const message = `¡Ho, ho, ho! 🎅\n\n¡Bienvenida a tu calendario de Adviento!\n\nEste año he preparado algo muy especial para ti. Durante los próximos 24 días te esperan pequeñas sorpresas, momentos especiales y mucha magia.\n\nPara descubrirlos, tendrás que buscar y escanear los códigos QR que encontrarás debajo de nuestro árbol de Navidad.\n\nCada día esconde una nueva sorpresa... ¡Pero no vale adelantarse!\n\n¿Estás preparada para vivir la magia de la Navidad?`;
+
+  let index = 0;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function finishTyping() {
+    if (!messageElement) return;
+    messageElement.innerHTML = message
+      .replaceAll("&", "&amp;")
+      .replace(/\n/g, "<br>");
+    if (startButton) startButton.hidden = false;
+  }
+
+  if (reducedMotion) {
+    finishTyping();
+  } else {
+    const timer = window.setInterval(() => {
+      index += 1;
+      const text = message.slice(0, index);
+      messageElement.textContent = text;
+
+      if (index >= message.length) {
+        window.clearInterval(timer);
+        if (startButton) {
+          window.setTimeout(() => {
+            startButton.hidden = false;
+          }, 250);
+        }
+      }
+    }, 18);
+  }
+
+  if (startButton) {
+    startButton.addEventListener("click", () => {
+      showDaySelector();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+}
+
+// Restaura el comportamiento original de la pantalla sin parámetro y de los días QR.
 function showDaySelector() {
   app.innerHTML = `
     <div class="panel warning-panel">
       <p class="eyebrow">Calendario de Adviento</p>
-      <h1>Sin referencia válida</h1>
+      <h1>Bienvenida a tu magia navideña</h1>
       <p>
-        La URL no incluye un expediente correcto. Usa un parámetro como
-        <strong>?dia=1</strong> hasta <strong>?dia=24</strong> para abrir un regalo oculto.
+        Durante los próximos días podrás descubrir pequeños detalles y sorpresas especiales.
+        Elige el día que quieras vivir hoy.
       </p>
-      <div class="terminal-note">Sistema de acceso: misterio navideño</div>
+      <div class="terminal-note">Una sorpresa esperándote cada día</div>
     </div>
 
     <div class="panel">
-      <p class="eyebrow">Seleccionar expediente</p>
+      <p class="eyebrow">Elige tu día</p>
       <div class="days-grid">
         ${adventCalendar
           .map(
@@ -416,14 +526,14 @@ function initApp() {
   const requestedDay = Number(params.get("dia"));
 
   if (!requestedDay || requestedDay < 1 || requestedDay > 24) {
-    showDaySelector();
+    showWelcomeScreen();
     return;
   }
 
   const entry = adventCalendar.find((item) => item.day === requestedDay);
 
   if (!entry) {
-    showDaySelector();
+    showWelcomeScreen();
     return;
   }
 

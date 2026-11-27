@@ -692,102 +692,674 @@ h1 {
   }
 }
 
-@media (max-width: 560px) {
-  #app {
-    width: 100%;
+/* --- Pantalla de bienvenida navideña --- */
+.welcome-screen {
+  width: 100%;
+  min-height: calc(100svh - 44px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.welcome-card {
+  width: 100%;
+  max-width: 760px;
+  min-height: 720px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 28px clamp(18px, 5vw, 44px) 32px;
+  border: 1px solid rgba(247, 215, 123, 0.38);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(247, 215, 123, 0.12), transparent 23%),
+    linear-gradient(145deg, rgba(74, 29, 34, 0.94), rgba(20, 30, 30, 0.97) 58%, rgba(12, 20, 24, 0.98));
+  box-shadow: 0 28px 70px rgba(5, 8, 10, 0.52), inset 0 1px 0 rgba(255, 250, 229, 0.08);
+  isolation: isolate;
+}
+
+.welcome-card::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 239, 190, 0.09);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.welcome-copy {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.welcome-eyebrow {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.welcome-copy h1 {
+  margin: 0;
+  color: #fff8e7;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.15rem, 8vw, 4.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-shadow: 0 5px 18px rgba(0, 0, 0, 0.42);
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(190px, 42%) minmax(260px, 58%);
+  align-items: center;
+  gap: clamp(8px, 2vw, 20px);
+  margin-top: 18px;
+}
+
+.santa-stage {
+  height: 430px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  animation: santaEntrance 1.25s cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.santa-glow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(247, 215, 123, 0.2), rgba(247, 215, 123, 0) 68%);
+  animation: glowBreathe 3.8s ease-in-out infinite;
+}
+
+.santa {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 220px;
+  height: 390px;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 22px 20px rgba(0, 0, 0, 0.38));
+}
+
+.santa-head {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 62px;
+  width: 148px;
+  height: 158px;
+  transform: translateX(-50%);
+  border-radius: 47% 47% 44% 44%;
+  background: linear-gradient(145deg, #ffd0ae 0 58%, #e9aa8b 100%);
+  border: 2px solid rgba(255, 236, 210, 0.42);
+  box-shadow: inset -10px -12px 18px rgba(168, 74, 63, 0.12);
+}
+
+.santa-hat {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  top: 0;
+  width: 178px;
+  height: 118px;
+  transform: translateX(-50%) rotate(-4deg);
+}
+
+.santa-hat::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 48px;
+  width: 148px;
+  height: 58px;
+  border-radius: 80% 22% 18% 18%;
+  background: linear-gradient(145deg, #e64a48, #9e1e25);
+  border: 2px solid rgba(255, 236, 210, 0.26);
+  transform: rotate(-8deg);
+}
+
+.santa-hat::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 88px;
+  width: 174px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fffaf0, #e6ded0);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.12);
+}
+
+.hat-tip {
+  position: absolute;
+  z-index: 2;
+  right: 4px;
+  top: 30px;
+  width: 74px;
+  height: 32px;
+  border-radius: 70% 90% 20% 70%;
+  background: #ae252b;
+  transform: rotate(28deg);
+  transform-origin: left center;
+}
+
+.hat-pom {
+  position: absolute;
+  z-index: 3;
+  right: -8px;
+  top: 47px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, #fff, #eee8dc 72%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
+}
+
+.ear {
+  position: absolute;
+  z-index: -1;
+  top: 58px;
+  width: 28px;
+  height: 38px;
+  border-radius: 50%;
+  background: #efb899;
+}
+
+.ear.left { left: -20px; }
+.ear.right { right: -20px; }
+
+.brow {
+  position: absolute;
+  z-index: 6;
+  top: 48px;
+  width: 34px;
+  height: 9px;
+  border-radius: 50%;
+  background: #f1eee2;
+}
+
+.brow.left { left: 28px; transform: rotate(-7deg); }
+.brow.right { right: 28px; transform: rotate(7deg); }
+
+.eye {
+  position: absolute;
+  z-index: 7;
+  top: 68px;
+  width: 12px;
+  height: 15px;
+  border-radius: 50%;
+  background: #31413a;
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.8);
+}
+
+.eye.left { left: 43px; }
+.eye.right { right: 43px; }
+
+.nose {
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  top: 82px;
+  width: 32px;
+  height: 27px;
+  transform: translateX(-50%);
+  border-radius: 52% 52% 48% 48%;
+  background: linear-gradient(145deg, #d87970, #b9534f);
+  box-shadow: inset 4px 3px 5px rgba(255, 205, 194, 0.24);
+}
+
+.cheek {
+  position: absolute;
+  z-index: 7;
+  top: 91px;
+  width: 28px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(225, 120, 112, 0.42);
+}
+
+.cheek.left { left: 14px; }
+.cheek.right { right: 14px; }
+
+.beard {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  top: 98px;
+  width: 134px;
+  height: 116px;
+  transform: translateX(-50%);
+  border-radius: 20% 20% 48% 48%;
+  background: linear-gradient(155deg, #fffaf1, #ded9cf);
+  clip-path: polygon(0 0, 22% 12%, 38% 4%, 50% 16%, 62% 4%, 78% 12%, 100% 0, 90% 54%, 72% 82%, 50% 100%, 28% 82%, 10% 54%);
+}
+
+.beard span {
+  position: absolute;
+  bottom: 14px;
+  width: 48px;
+  height: 58px;
+  border-left: 1px solid rgba(171, 164, 151, 0.18);
+  border-radius: 50%;
+}
+
+.beard span:nth-child(1) { left: 22px; transform: rotate(12deg); }
+.beard span:nth-child(2) { left: 43px; bottom: 6px; }
+.beard span:nth-child(3) { right: 22px; transform: rotate(-12deg); }
+
+.mustache {
+  position: absolute;
+  z-index: 10;
+  top: 105px;
+  width: 54px;
+  height: 28px;
+  background: #f9f5ea;
+  border-radius: 80% 20% 60% 40%;
+}
+
+.mustache.left { left: 24px; transform: rotate(8deg); }
+.mustache.right { right: 24px; transform: rotate(-8deg) scaleX(-1); }
+
+.santa-body {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 0;
+  width: 196px;
+  height: 218px;
+  transform: translateX(-50%);
+  border-radius: 48% 48% 12% 12%;
+  background: linear-gradient(145deg, #b82b32, #7f171d);
+  border: 2px solid rgba(255, 232, 190, 0.18);
+  box-shadow: inset 16px 0 24px rgba(255, 125, 115, 0.12);
+}
+
+.coat-trim {
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  width: 30px;
+  height: 218px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #ece4d5, #fffaf0, #ddd5c6);
+  clip-path: polygon(18% 0, 82% 0, 68% 100%, 32% 100%);
+}
+
+.belt {
+  position: absolute;
+  left: -4px;
+  bottom: 66px;
+  width: 204px;
+  height: 28px;
+  background: linear-gradient(180deg, #30292a, #17191b);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
+}
+
+.belt span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 42px;
+  height: 42px;
+  transform: translate(-50%, -50%);
+  border: 7px solid #d7b56a;
+  border-radius: 8px;
+  background: #262224;
+  box-shadow: inset 0 0 0 5px #b18d49;
+}
+
+.santa-arm {
+  position: absolute;
+  z-index: 2;
+  bottom: 76px;
+  width: 66px;
+  height: 150px;
+  border-radius: 60% 60% 30% 30%;
+  background: linear-gradient(145deg, #b82b32, #811820);
+}
+
+.santa-arm.left {
+  left: -16px;
+  transform: rotate(12deg);
+}
+
+.santa-arm.right {
+  right: -18px;
+  transform-origin: 30px 30px;
+  transform: rotate(-18deg);
+  animation: santaWave 2.6s ease-in-out 1.2s infinite;
+}
+
+.wave-mitt {
+  position: absolute;
+  left: 8px;
+  bottom: -12px;
+  width: 54px;
+  height: 48px;
+  border-radius: 48% 48% 44% 44%;
+  background: linear-gradient(145deg, #fffaf0, #dad3c5);
+}
+
+.speech-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+}
+
+.speech-bubble {
+  position: relative;
+  min-height: 390px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid rgba(247, 215, 123, 0.34);
+  border-radius: 22px 22px 22px 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.055), transparent 35%),
+    rgba(15, 21, 23, 0.82);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 248, 222, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  bottom: 56px;
+  width: 34px;
+  height: 34px;
+  transform: rotate(42deg);
+  border-left: 1px solid rgba(247, 215, 123, 0.34);
+  border-bottom: 1px solid rgba(247, 215, 123, 0.34);
+  border-radius: 0 0 0 8px;
+  background: #182023;
+}
+
+.speech-bow {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  color: var(--gold);
+  font-size: 0.75rem;
+  opacity: 0.75;
+  animation: sparklePulse 2.4s ease-in-out infinite;
+}
+
+.santa-message {
+  margin: 0;
+  color: #fff8e7;
+  font-family: "Lora", Georgia, serif;
+  font-size: clamp(0.82rem, 2vw, 1.02rem);
+  line-height: 1.62;
+  white-space: pre-wrap;
+}
+
+.typing-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 3px;
+  vertical-align: -2px;
+  background: var(--gold);
+  animation: caretBlink 0.72s step-end infinite;
+}
+
+.welcome-action {
+  min-height: 58px;
+  width: 100%;
+  border: 1px solid rgba(255, 232, 167, 0.55);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #cf3037, #9d2025);
+  color: #fffaf0;
+  box-shadow: 0 12px 28px rgba(157, 32, 37, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(0.82rem, 2.2vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  animation: buttonReveal 0.7s cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.welcome-action span {
+  margin-left: 8px;
+  color: var(--gold);
+}
+
+.welcome-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(157, 32, 37, 0.42), 0 0 18px rgba(247, 215, 123, 0.12);
+}
+
+.welcome-action:active { transform: scale(0.98); }
+
+.welcome-lights {
+  position: absolute;
+  z-index: 8;
+  left: 8%;
+  right: 8%;
+  top: 16px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(247, 215, 123, 0.22);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.welcome-lights span {
+  width: 9px;
+  height: 9px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: #f7d77b;
+  box-shadow: 0 0 8px #f7d77b, 0 0 16px rgba(247, 215, 123, 0.42);
+  animation: sparklePulse 1.8s ease-in-out infinite alternate;
+}
+
+.welcome-lights span:nth-child(2n) { background: #dc3c43; box-shadow: 0 0 10px #dc3c43; animation-delay: -0.7s; }
+.welcome-lights span:nth-child(3n) { background: #72ad89; box-shadow: 0 0 10px #72ad89; animation-delay: -1.1s; }
+
+.welcome-stars span {
+  position: absolute;
+  z-index: 2;
+  color: var(--gold);
+  animation: sparklePulse 2.2s ease-in-out infinite;
+}
+
+.welcome-stars span:nth-child(1) { left: 7%; top: 20%; }
+.welcome-stars span:nth-child(2) { right: 8%; top: 28%; animation-delay: -0.8s; }
+.welcome-stars span:nth-child(3) { left: 12%; bottom: 10%; animation-delay: -1.4s; }
+
+@keyframes santaEntrance {
+  0% { opacity: 0; transform: translateY(55px) scale(0.92); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes santaWave {
+  0%, 100% { transform: rotate(-18deg); }
+  50% { transform: rotate(-31deg) translateY(-4px); }
+}
+
+@keyframes glowBreathe {
+  0%, 100% { opacity: 0.55; transform: translateX(-50%) scale(0.88); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+}
+
+@keyframes caretBlink { 50% { opacity: 0; } }
+@keyframes sparklePulse { 0%, 100% { opacity: 0.48; transform: scale(0.82) rotate(0deg); } 50% { opacity: 1; transform: scale(1.16) rotate(8deg); } }
+@keyframes buttonReveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (min-width: 700px) {
+  #app:has(.welcome-screen) { width: min(100%, 760px); }
+}
+
+@media (max-width: 699px) {
+  body:has(.welcome-screen) { align-items: center; }
+
+  #app:has(.welcome-screen) { width: 100%; }
+
+  .welcome-screen {
+    min-height: calc(100svh - 32px);
   }
 
-  .advent-hero {
-    min-height: 0;
+  .welcome-card {
+    min-height: min(760px, calc(100svh - 32px));
+    padding: 20px 14px 18px;
+    border-radius: 22px;
+  }
+
+  .welcome-copy h1 {
+    font-size: clamp(1.8rem, 9vw, 2.8rem);
+  }
+
+  .welcome-content {
+    grid-template-columns: 35% 65%;
+    align-items: end;
+    gap: 2px;
+    margin-top: 8px;
+  }
+
+  .santa-stage {
+    height: 360px;
+  }
+
+  .santa {
+    width: 190px;
+    height: 350px;
+    transform: translateX(-50%) scale(0.84);
+    transform-origin: bottom center;
+  }
+
+  .speech-bubble {
+    min-height: 330px;
+    padding: 18px 15px;
+  }
+
+  .santa-message {
+    font-size: clamp(0.72rem, 2.7vw, 0.86rem);
+    line-height: 1.48;
+  }
+
+  .welcome-action {
+    min-height: 52px;
+  }
+}
+
+@media (max-width: 480px) {
+  body:has(.welcome-screen) {
+    padding: max(8px, env(safe-area-inset-top)) 8px max(8px, env(safe-area-inset-bottom));
+  }
+
+  .welcome-card {
+    justify-content: flex-start;
+  }
+
+  .welcome-content {
     grid-template-columns: 1fr;
+    align-items: center;
   }
 
-  .gift-column {
-    min-height: 240px;
+  .santa-stage {
+    height: 260px;
   }
 
-  .snowy-gift {
-    width: 130px;
-    height: 140px;
+  .santa {
+    width: 190px;
+    height: 350px;
+    transform: translateX(-50%) scale(0.68);
   }
 
-  .poster-column {
-    width: 100%;
-    min-width: 0;
-    padding: 8px 10px 18px;
+  .speech-bubble {
+    min-height: 0;
+    max-height: 330px;
+    overflow-y: auto;
+    padding: 16px;
   }
 
-  .poster-main {
-    width: min(100%, 310px);
+  .speech-bubble::before {
+    left: 50%;
+    top: -12px;
+    bottom: auto;
+    width: 24px;
+    height: 24px;
+    transform: translateX(-50%) rotate(225deg);
   }
 
-  .poster-secondary {
-    width: min(82%, 250px);
-  }
-
-  .poster-card-content h1 {
-    font-size: clamp(0.76rem, 3.6vw, 1rem);
-  }
-
-  .poster-card-content p {
-    font-size: clamp(0.62rem, 2.8vw, 0.82rem);
-  }
-
-  .poster-action {
-    min-height: 38px;
-    font-size: clamp(0.58rem, 2.5vw, 0.72rem);
+  .welcome-action {
+    min-height: 54px;
   }
 }
 
 @media (max-width: 360px) {
-  body {
-    padding-inline: 8px;
-  }
+  .welcome-card { padding-inline: 10px; }
+  .welcome-eyebrow { font-size: 0.58rem; }
+  .welcome-copy h1 { font-size: 1.68rem; }
+  .santa-stage { height: 235px; }
+  .santa { transform: translateX(-50%) scale(0.62); }
+  .santa-message { font-size: 0.69rem; }
+}
 
-  .gift-column {
-    min-height: 220px;
+@media (prefers-reduced-motion: reduce) {
+  .santa-stage,
+  .santa-arm.right,
+  .welcome-lights span,
+  .welcome-stars span,
+  .santa-glow,
+  .typing-caret,
+  .speech-bow {
+    animation: none !important;
   }
+}
 
-  .poster-main {
-    width: min(100%, 280px);
-  }
+@media (max-width: 560px) {
+  #app { width: 100%; }
+  .advent-hero { min-height: 0; grid-template-columns: 1fr; }
+  .gift-column { min-height: 240px; }
+  .snowy-gift { width: 130px; height: 140px; }
+  .poster-column { width: 100%; min-width: 0; padding: 8px 10px 18px; }
+  .poster-main { width: min(100%, 310px); }
+  .poster-secondary { width: min(82%, 250px); }
+  .poster-card-content h1 { font-size: clamp(0.76rem, 3.6vw, 1rem); }
+  .poster-card-content p { font-size: clamp(0.62rem, 2.8vw, 0.82rem); }
+  .poster-action { min-height: 38px; font-size: clamp(0.58rem, 2.5vw, 0.72rem); }
+}
 
-  .poster-secondary {
-    width: min(78%, 220px);
-  }
+@media (max-width: 360px) {
+  body { padding-inline: 8px; }
+  .gift-column { min-height: 220px; }
+  .poster-main { width: min(100%, 280px); }
+  .poster-secondary { width: min(78%, 220px); }
 }
 
 @media (min-width: 500px) {
-  body {
-    padding-top: 24px;
-  }
-
-  #app {
-    width: min(100%, 500px);
-  }
-
-  .panel {
-    padding: 20px 18px 18px;
-  }
-
-  .days-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
+  body { padding-top: 24px; }
+  #app { width: min(100%, 500px); }
+  .panel { padding: 20px 18px 18px; }
+  .days-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 }
 
 @media (min-width: 700px) {
-  body {
-    padding-top: 40px;
-  }
-
-  #app {
-    width: min(100%, 560px);
-  }
-
-  .action-btn,
-  .nav-btn {
-    min-height: 54px;
-  }
+  body { padding-top: 40px; }
+  #app { width: min(100%, 560px); }
+  .action-btn, .nav-btn { min-height: 54px; }
 }
 
 .home-link {
@@ -1043,10 +1615,7 @@ h1 {
   overflow: visible;
 }
 
-.individual-day .advent-panel::before {
-  display: none;
-}
-
+.individual-day .advent-panel::before { display: none; }
 .individual-day .advent-hero {
   width: 100%;
   min-height: 0;
@@ -1056,11 +1625,8 @@ h1 {
   background: none;
   overflow: visible;
 }
-
 .individual-day .advent-hero::before,
-.individual-day .advent-hero::after {
-  display: none;
-}
+.individual-day .advent-hero::after { display: none; }
 
 .individual-day .gift-column {
   min-height: 185px;
@@ -1188,9 +1754,7 @@ h1 {
   border: 1px solid rgba(247, 215, 123, 0.48);
   border-radius: 12px;
   background: rgba(67, 42, 34, 0.88);
-  box-shadow:
-    0 10px 22px rgba(24, 13, 10, 0.34),
-    inset 0 1px 0 rgba(255, 246, 220, 0.06);
+  box-shadow: 0 10px 22px rgba(24, 13, 10, 0.34), inset 0 1px 0 rgba(255, 246, 220, 0.06);
   backdrop-filter: blur(8px);
   animation: secondaryClueReveal 0.48s cubic-bezier(.2, .75, .25, 1) both;
 }
@@ -1211,11 +1775,7 @@ h1 {
   text-shadow: 0 2px 8px rgba(247, 215, 123, 0.22);
 }
 
-.secondary-clue-copy {
-  min-width: 0;
-  text-align: center;
-}
-
+.secondary-clue-copy { min-width: 0; text-align: center; }
 .secondary-clue-copy span {
   display: block;
   margin-bottom: 5px;
@@ -1226,7 +1786,6 @@ h1 {
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-
 .secondary-clue-copy p {
   margin: 0;
   color: #fff6dc;
@@ -1234,29 +1793,15 @@ h1 {
   font-size: clamp(0.68rem, 2.8vw, 0.82rem);
   line-height: 1.42;
 }
-
 .secondary-clue-card.exact-location {
   border-color: rgba(255, 226, 148, 0.78);
-  box-shadow:
-    0 12px 26px rgba(24, 13, 10, 0.38),
-    0 0 18px rgba(247, 215, 123, 0.16),
-    inset 0 1px 0 rgba(255, 246, 220, 0.08);
+  box-shadow: 0 12px 26px rgba(24, 13, 10, 0.38), 0 0 18px rgba(247, 215, 123, 0.16), inset 0 1px 0 rgba(255, 246, 220, 0.08);
 }
-
-/* Keep the secondary clue card hidden until requested. */
-.secondary-clue-card.hidden {
-  display: none;
-}
+.secondary-clue-card.hidden { display: none; }
 
 @keyframes secondaryClueReveal {
-  from {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @media (max-width: 360px) {
@@ -1266,10 +1811,5 @@ h1 {
     gap: 8px;
     padding: 11px 12px;
   }
-
-  .secondary-clue-icon {
-    width: 38px;
-    height: 38px;
-    font-size: 1.35rem;
-  }
+  .secondary-clue-icon { width: 38px; height: 38px; font-size: 1.35rem; }
 }
