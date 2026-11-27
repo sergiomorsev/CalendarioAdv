@@ -3,9 +3,9 @@ const adventCalendar = [
     day: 1,
     date: "2026-11-27",
     title: "Caso 01: La Firma del Primer Secreto",
-    message: "Mi amor, hoy empieza la aventura. Cada día te dejo una pista, porque tú eres mi caso favorito y mi mayor regalo.",
-    riddle: "Busca el lugar donde la noche guarda la calma: junto a la almohada, en el punto más íntimo del descanso.",
-    hint1: "La pista está al lado de donde duermes cada noche.",
+    message: "Para encontrar tu primer regalito lo puedo encontrar en un sitio en el que pasamos muchas horas",
+    riddle: "Está en nuestro cuarto, pero vas a tener que mover alguna que otra cosita para encontrarlo",
+    hint1: "Mira detrás de los cojines de nuestra cama!",
     hint2: "Está en la mesita de noche, debajo de la lámpara."
   },
   {
